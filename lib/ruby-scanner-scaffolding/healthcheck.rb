@@ -2,12 +2,7 @@ require 'json'
 
 class Healthcheck
 
-  def initialize(client)
-    status 500
-    if healthy?(client)
-      status 200
-    end
-
+  def check(client)
     content_type :json
     {
         started_at: client.start_time,
