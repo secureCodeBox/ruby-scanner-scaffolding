@@ -3,9 +3,8 @@ require 'json'
 class Healthcheck
 
   def initialize(client)
-    test_run = scanner_test
     status 500
-    if healthy?(client, test_run)
+    if healthy?(client)
       status 200
     end
 
@@ -25,7 +24,7 @@ class Healthcheck
         },
         scanner: {
             version: 'latest',
-            test_run: scanner_test
+            test_run: healthy?
         },
         build: {
             repository_url: client.repository_url,
@@ -36,6 +35,6 @@ class Healthcheck
   end
 
   def healthy?(client)
-    client.healthy
+    client.healthy?
   end
 end
