@@ -18,7 +18,7 @@ class Healthcheck
         },
         scanner: {
             version: 'latest',
-            test_run: healthy?
+            test_run: healthy?(client)
         },
         build: {
             repository_url: client.repository_url,
