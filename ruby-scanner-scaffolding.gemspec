@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'ruby-scanner-scaffolding'
-  s.version     = '0.0.1'
+  s.version     = '1.0.0'
   s.date        = '2019-04-15'
   s.summary     = "Gem providing camunda worker for integrated, ruby based, scanner"
   s.authors     = ["Iteratec GmbH"]
