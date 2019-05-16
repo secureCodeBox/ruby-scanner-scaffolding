@@ -3,7 +3,6 @@ require 'json'
 class Healthcheck
 
   def check(client)
-    content_type :json
     {
         started_at: client.start_time,
         worker_id: client.worker_id,
