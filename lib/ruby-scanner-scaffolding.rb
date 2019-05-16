@@ -191,4 +191,8 @@ class CamundaWorker
                               })
     end
   end
+
+  def healthy?
+    true
+  end
 end
