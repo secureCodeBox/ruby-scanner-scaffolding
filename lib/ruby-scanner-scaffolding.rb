@@ -64,6 +64,11 @@ class CamundaWorker
     print "Test Run: failed\n" unless healthy
     print "Version: #{self.version}\n"
     print "\n"
+    print "Build:\n"
+    print "Commit: #{@repository_url}\n"
+    print "Repository: #{@branch}\n"
+    print "Branch: #{@commit_id}\n"
+    print "\n"
 
     Thread.new do
       sleep poll_interval
