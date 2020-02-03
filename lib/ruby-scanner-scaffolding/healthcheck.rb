@@ -1,7 +1,6 @@
 require 'json'
 
 class Healthcheck
-
   def check(client)
     {
         started_at: client.start_time,
@@ -17,8 +16,8 @@ class Healthcheck
             last_successful_connection: client.last_connect
         },
         scanner: {
-            version: 'latest',
-            test_run: healthy?(client)
+          test_run: client.healthy?,
+          version: client.version
         },
         build: {
             repository_url: client.repository_url,
@@ -26,9 +25,5 @@ class Healthcheck
             commit_id: client.commit_id
         }
     }.to_json
-  end
-
-  def healthy?(client)
-    client.healthy?
   end
 end

@@ -48,6 +48,28 @@ class CamundaWorker
     @branch = ENV.fetch('SCB_BRANCH', 'unknown')
     @commit_id = ENV.fetch('SCB_COMMIT_ID', 'unknown')
 
+    healthcheckClient = Healthcheck.new
+    healthy = self.healthy?
+
+    print "Worker #{@worker_id} started\n"
+    print "Started status server at port 8080\n"
+    print "\n"
+    print "Worker Settings:\n"
+    print "Id: #{@worker_id}\n"
+    print "TopicName: #{@topic}\n"
+    print "EngineAddress: #{@camunda_url}\n"
+    print "\n"
+    print "Scanner Status:\n"
+    print "Test Run: successful\n" if healthy
+    print "Test Run: failed\n" unless healthy
+    print "Version: #{self.version}\n"
+    print "\n"
+    print "Build:\n"
+    print "Commit: #{@repository_url}\n"
+    print "Repository: #{@branch}\n"
+    print "Branch: #{@commit_id}\n"
+    print "\n"
+
     Thread.new do
       sleep poll_interval
 
@@ -194,5 +216,9 @@ class CamundaWorker
 
   def healthy?
     true
+  end
+
+  def version
+    "unkown"
   end
 end
