@@ -2,10 +2,11 @@ require 'json'
 
 class Healthcheck
   def check(client)
+    healthy = client.healthy?
     {
         started_at: client.start_time,
         worker_id: client.worker_id,
-        healthcheck: healthy?(client),
+        healthcheck: healthy,
         status: {
             started: client.started_tasks,
             completed: client.completed_tasks,
@@ -16,7 +17,7 @@ class Healthcheck
             last_successful_connection: client.last_connect
         },
         scanner: {
-          test_run: client.healthy?,
+          test_run: healthy,
           version: client.version
         },
         build: {
