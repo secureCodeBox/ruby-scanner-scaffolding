@@ -65,9 +65,9 @@ class CamundaWorker
     print "Version: #{self.version}\n"
     print "\n"
     print "Build:\n"
-    print "Commit: #{@repository_url}\n"
-    print "Repository: #{@branch}\n"
-    print "Branch: #{@commit_id}\n"
+    print "Commit: #{@commit_id}\n"
+    print "Repository: #{@repository_url}\n"
+    print "Branch: #{@branch}\n"
     print "\n"
 
     Thread.new do
